@@ -3,20 +3,375 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>HAVVAH — Preview</title>
+  <title>HAVVAH — Perfumaria & Cosméticos</title>
+  <meta name="description" content="HAVVAH — sensualidade elegante. Body splashes, perfumes capilares, cremes e linha masculina." />
+  <style>
+    :root{
+      --bg:#0b0b0c;
+      --paper:#0f0f10;
+      --text:#f4f4f5;
+      --muted:rgba(244,244,245,.72);
+      --line:rgba(244,244,245,.14);
+      --chip:rgba(244,244,245,.06);
+      --btn:#f4f4f5;
+      --btnText:#0b0b0c;
+      --btn2:transparent;
+      --radius:16px;
+      --radius2:26px;
+      --max:1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 600px at 70% -10%, rgba(244,244,245,.08), transparent 55%),
+        radial-gradient(900px 500px at 10% 10%, rgba(244,244,245,.05), transparent 55%),
+        linear-gradient(180deg, #070708, #0b0b0c 40%, #070708);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      letter-spacing:.2px;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      border:1px solid var(--line);
+      background: rgba(15,15,16,.55);
+      backdrop-filter: blur(12px);
+      border-radius:999px;
+      padding:10px 14px;
+      position:sticky; top:14px; z-index:20;
+    }
+    .brand{display:flex; gap:10px; align-items:center}
+    .brandMark{
+      width:34px; height:34px; border-radius:999px;
+      border:1px solid var(--line);
+      background: radial-gradient(circle at 30% 30%, rgba(244,244,245,.22), rgba(244,244,245,.04));
+    }
+    .brandName{font-weight:700; letter-spacing:.6px}
+    .navLinks{display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-end}
+    .chip{
+      padding:8px 12px; border-radius:999px;
+      border:1px solid var(--line);
+      background: var(--chip);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .chip:hover{color:var(--text); border-color:rgba(244,244,245,.28)}
+    .hero{
+      margin-top:22px;
+      border:1px solid var(--line);
+      border-radius:var(--radius2);
+      padding:28px;
+      background:
+        linear-gradient(135deg, rgba(244,244,245,.08), rgba(244,244,245,.02) 55%),
+        rgba(15,15,16,.35);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(700px 420px at 75% 25%, rgba(244,244,245,.10), transparent 60%);
+      pointer-events:none;
+    }
+    .kicker{
+      color:var(--muted);
+      text-transform:uppercase;
+      font-size:12px;
+      letter-spacing:2.2px;
+    }
+    h1{
+      margin:12px 0 10px;
+      font-size:42px;
+      line-height:1.06;
+      letter-spacing:.2px;
+    }
+    .sub{
+      color:var(--muted);
+      max-width:60ch;
+      font-size:16px;
+      line-height:1.55;
+    }
+    .ctaRow{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      font-weight:650;
+      letter-spacing:.2px;
+      transition:transform .12s ease, border-color .12s ease, background .12s ease;
+    }
+    .btnPrimary{
+      background:var(--btn);
+      color:var(--btnText);
+      border-color:transparent;
+    }
+    .btnPrimary:hover{transform:translateY(-1px)}
+    .btnGhost{
+      background:transparent;
+      color:var(--text);
+    }
+    .btnGhost:hover{border-color:rgba(244,244,245,.30)}
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr}
+      h1{font-size:34px}
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background: rgba(15,15,16,.35);
+      padding:18px;
+    }
+    .cardTitle{font-weight:700; letter-spacing:.5px}
+    .cardP{color:var(--muted); margin:10px 0 0; line-height:1.6}
+    .sectionTitle{
+      display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+      margin-top:26px;
+    }
+    .sectionTitle h2{margin:0; font-size:18px; letter-spacing:.7px}
+    .sectionTitle span{color:var(--muted); font-size:13px}
+    .collections{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+      margin-top:12px;
+    }
+    @media (max-width: 980px){ .collections{grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 520px){ .collections{grid-template-columns: 1fr;} }
+    .tile{
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:16px;
+      background:
+        radial-gradient(420px 220px at 30% 20%, rgba(244,244,245,.08), transparent 65%),
+        rgba(15,15,16,.35);
+      min-height:130px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .tile .top{display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .tag{
+      font-size:12px; color:var(--muted);
+      border:1px solid var(--line);
+      background: rgba(244,244,245,.04);
+      padding:6px 10px; border-radius:999px;
+    }
+    .tile h3{margin:12px 0 0; font-size:16px; letter-spacing:.5px}
+    .tile p{margin:8px 0 0; color:var(--muted); line-height:1.55; font-size:13px}
+    .tile .go{margin-top:14px; color:rgba(244,244,245,.86); font-weight:650; font-size:13px}
+    .featured{
+      margin-top:16px;
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:18px;
+      background:
+        linear-gradient(135deg, rgba(244,244,245,.07), rgba(244,244,245,.01) 60%),
+        rgba(15,15,16,.35);
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:center;
+    }
+    @media (max-width: 900px){ .featured{grid-template-columns:1fr} }
+    .price{color:var(--muted); font-size:14px; margin-top:8px}
+    .bullets{margin:14px 0 0; padding:0; list-style:none; color:var(--muted); line-height:1.8}
+    .bullets li{padding-left:14px; position:relative}
+    .bullets li:before{content:"—"; position:absolute; left:0; color:rgba(244,244,245,.50)}
+    .divider{height:1px; background:var(--line); margin:18px 0}
+    footer{
+      margin:26px 0 10px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.6;
+      display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    }
+    .smallLinks{display:flex; gap:12px; flex-wrap:wrap}
+    .smallLinks a{color:var(--muted); border-bottom:1px solid transparent}
+    .smallLinks a:hover{color:var(--text); border-bottom-color:rgba(244,244,245,.35)}
+  </style>
 </head>
-<body style="font-family:system-ui; padding:40px; max-width:820px; margin:auto;">
-  <h1>HAVVAH</h1>
-  <p>Preview do site (Cloudflare Pages) no ar.</p>
 
-  <h2>Afrodite Vanilla — Perfume Capilar 50 ml</h2>
-  <p>R$ 78,90</p>
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand">
+        <div class="brandMark" aria-hidden="true"></div>
+        <div class="brandName">HAVVAH</div>
+      </div>
+      <div class="navLinks">
+        <a class="chip" href="#colecoes">Coleções</a>
+        <a class="chip" href="#destaque">Destaque</a>
+        <a class="chip" href="#manifesto">Manifesto</a>
+      </div>
+    </div>
 
-  <p>
-    <a href="https://buy.stripe.com/test_aFa00l1II4SL5Wvcur7EQ00" target="_blank" rel="noopener noreferrer"
-      style="display:inline-block;padding:12px 16px;border-radius:10px;background:#111;color:#fff;text-decoration:none;">
-      Comprar agora (Stripe teste)
-    </a>
-  </p>
+    <section class="hero" id="topo">
+      <div class="kicker">Perfumaria • Cosméticos • Editorial Noir</div>
+      <h1>Sensualidade elegante.<br/>Sem vulgaridade.</h1>
+      <p class="sub">
+        HAVVAH nasce para ser desejo: presença limpa, rastro íntimo e assinatura autoral.
+        Do body splash ao perfume capilar — a estética é a mesma: preto e branco, luxo e pele.
+      </p>
+      <div class="ctaRow">
+        <a class="btn btnPrimary" href="#destaque">Ver o destaque</a>
+        <a class="btn btnGhost" href="#colecoes">Explorar coleções</a>
+      </div>
+
+      <div class="grid" style="position:relative; z-index:1;">
+        <div class="card">
+          <div class="cardTitle">Assinatura HAVVAH</div>
+          <p class="cardP">
+            Um equilíbrio entre “clean” e magnetismo: a sensação de luxo discreto
+            que aproxima — e fica.
+          </p>
+        </div>
+        <div class="card">
+          <div class="cardTitle">Compra simples</div>
+          <p class="cardP">
+            Botão “Comprar agora” com checkout Stripe por produto.
+            Rápido para começar a vender e fácil de escalar.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="sectionTitle" id="colecoes">
+      <h2>Coleções</h2>
+      <span>Uma vitrine editorial — com foco em desejo + conversão</span>
+    </div>
+
+    <section class="collections" aria-label="Coleções">
+      <a class="tile" href="#destaque">
+        <div class="top">
+          <span class="tag">Body Splash</span>
+          <span class="tag">200 ml</span>
+        </div>
+        <div>
+          <h3>Seis aromas. Um rastro limpo.</h3>
+          <p>Afrodite, Hera, Selene, Perséfone, Ísis e Héstia.</p>
+        </div>
+        <div class="go">Ver coleção →</div>
+      </a>
+
+      <a class="tile" href="#destaque">
+        <div class="top">
+          <span class="tag">Perfume Capilar</span>
+          <span class="tag">50 ml</span>
+        </div>
+        <div>
+          <h3>O detalhe que muda tudo.</h3>
+          <p>Perfume no cabelo: aura íntima e projeção elegante.</p>
+        </div>
+        <div class="go">Ver coleção →</div>
+      </a>
+
+      <a class="tile" href="#destaque">
+        <div class="top">
+          <span class="tag">Cremes</span>
+          <span class="tag">com mica</span>
+        </div>
+        <div>
+          <h3>Pele iluminada. Luxo discreto.</h3>
+          <p>Hidratantes e iluminadores com acabamento premium.</p>
+        </div>
+        <div class="go">Ver coleção →</div>
+      </a>
+
+      <a class="tile" href="#destaque">
+        <div class="top">
+          <span class="tag">Masculinos</span>
+          <span class="tag">100 ml</span>
+        </div>
+        <div>
+          <h3>Presença escura, limpa e direta.</h3>
+          <p>Perfume corporal + hidratante sem mica.</p>
+        </div>
+        <div class="go">Ver coleção →</div>
+      </a>
+    </section>
+
+    <div class="sectionTitle" id="destaque">
+      <h2>Destaque</h2>
+      <span>Checkout funcionando (Stripe teste)</span>
+    </div>
+
+    <section class="featured" aria-label="Produto em destaque">
+      <div>
+        <div class="kicker" style="margin:0;">Perfume Capilar • 50 ml</div>
+        <h2 style="margin:10px 0 0; font-size:26px; letter-spacing:.4px;">Afrodite Vanilla</h2>
+        <div class="price">R$ 78,90</div>
+
+        <ul class="bullets">
+          <li>Baunilha polida + floral cremoso + fundo macio.</li>
+          <li>Rastro íntimo: aparece no movimento do cabelo.</li>
+          <li>Compra em 1 clique via Stripe Checkout.</li>
+        </ul>
+
+        <div class="ctaRow">
+          <a class="btn btnPrimary"
+             href="https://buy.stripe.com/test_aFa00l1II4SL5Wvcur7EQ00"
+             target="_blank" rel="noopener noreferrer">
+             Comprar agora
+          </a>
+          <a class="btn btnGhost" href="#manifesto">Ler manifesto</a>
+        </div>
+
+        <div class="divider"></div>
+        <div style="color:var(--muted); font-size:12px; line-height:1.6;">
+          *Checkout em modo teste. Depois você me manda o link real e eu substituo sem mudar o design.
+        </div>
+      </div>
+
+      <div class="card" style="border-radius:28px;">
+        <div class="cardTitle">Como usar</div>
+        <p class="cardP">
+          Borrife a 15–20 cm do cabelo (comprimento e pontas).
+          Reaplique quando quiser reativar o rastro — especialmente antes de sair.
+        </p>
+        <div class="divider"></div>
+        <div class="cardTitle">Efeito</div>
+        <p class="cardP">
+          Aura elegante e contínua: o perfume aparece quando você se move.
+        </p>
+      </div>
+    </section>
+
+    <div class="sectionTitle" id="manifesto">
+      <h2>Manifesto</h2>
+      <span>curto, direto, premium</span>
+    </div>
+
+    <section class="card" style="border-radius:28px;">
+      <p class="cardP" style="margin:0; font-size:15px;">
+        HAVVAH é assinatura.
+        Não sobre “chegar chegando” — e sim sobre ficar.
+        Preto e branco, luz e sombra, pele e presença.
+        O luxo aqui é íntimo: você sente antes de explicar.
+      </p>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> HAVVAH • Preview em Cloudflare Pages</div>
+      <div class="smallLinks">
+        <a href="#topo">Topo</a>
+        <a href="#colecoes">Coleções</a>
+        <a href="#destaque">Destaque</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
