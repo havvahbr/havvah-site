@@ -3,372 +3,441 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>HAVVAH — Perfumaria & Cosméticos</title>
-  <meta name="description" content="HAVVAH — sensualidade elegante. Body splashes, perfumes capilares, cremes e linha masculina." />
+  <title>HAVVAH — Fragrâncias de Presença</title>
+  <meta name="description" content="Criações autorais com magnetismo, ylang-ylang e assinatura egípcia." />
+
   <style>
     :root{
-      --bg:#0b0b0c;
-      --paper:#0f0f10;
-      --text:#f4f4f5;
-      --muted:rgba(244,244,245,.72);
-      --line:rgba(244,244,245,.14);
-      --chip:rgba(244,244,245,.06);
-      --btn:#f4f4f5;
-      --btnText:#0b0b0c;
-      --btn2:transparent;
-      --radius:16px;
-      --radius2:26px;
+      --gold:#c9a25a;
+      --gold2:#b98f47;
+      --ink:#1e1e1e;
+      --muted:#6f6f6f;
+      --line:#d9d9d9;
+      --bg:#ffffff;
+
       --max:1120px;
+      --headerH:64px;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
     body{
       margin:0;
-      background:
-        radial-gradient(1200px 600px at 70% -10%, rgba(244,244,245,.08), transparent 55%),
-        radial-gradient(900px 500px at 10% 10%, rgba(244,244,245,.05), transparent 55%),
-        linear-gradient(180deg, #070708, #0b0b0c 40%, #070708);
-      color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      letter-spacing:.2px;
+      background:var(--bg);
+      color:var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
     }
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      border:1px solid var(--line);
-      background: rgba(15,15,16,.55);
-      backdrop-filter: blur(12px);
-      border-radius:999px;
-      padding:10px 14px;
-      position:sticky; top:14px; z-index:20;
-    }
-    .brand{display:flex; gap:10px; align-items:center}
-    .brandMark{
-      width:34px; height:34px; border-radius:999px;
-      border:1px solid var(--line);
-      background: radial-gradient(circle at 30% 30%, rgba(244,244,245,.22), rgba(244,244,245,.04));
-    }
-    .brandName{font-weight:700; letter-spacing:.6px}
-    .navLinks{display:flex; gap:12px; flex-wrap:wrap; justify-content:flex-end}
-    .chip{
-      padding:8px 12px; border-radius:999px;
-      border:1px solid var(--line);
-      background: var(--chip);
-      color:var(--muted);
-      font-size:13px;
-    }
-    .chip:hover{color:var(--text); border-color:rgba(244,244,245,.28)}
-    .hero{
-      margin-top:22px;
-      border:1px solid var(--line);
-      border-radius:var(--radius2);
-      padding:28px;
-      background:
-        linear-gradient(135deg, rgba(244,244,245,.08), rgba(244,244,245,.02) 55%),
-        rgba(15,15,16,.35);
-      position:relative;
-      overflow:hidden;
-    }
-    .hero:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(700px 420px at 75% 25%, rgba(244,244,245,.10), transparent 60%);
-      pointer-events:none;
-    }
-    .kicker{
-      color:var(--muted);
-      text-transform:uppercase;
-      font-size:12px;
-      letter-spacing:2.2px;
-    }
-    h1{
-      margin:12px 0 10px;
-      font-size:42px;
-      line-height:1.06;
-      letter-spacing:.2px;
-    }
-    .sub{
-      color:var(--muted);
-      max-width:60ch;
-      font-size:16px;
-      line-height:1.55;
-    }
-    .ctaRow{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:12px 16px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      font-weight:650;
-      letter-spacing:.2px;
-      transition:transform .12s ease, border-color .12s ease, background .12s ease;
-    }
-    .btnPrimary{
-      background:var(--btn);
-      color:var(--btnText);
-      border-color:transparent;
-    }
-    .btnPrimary:hover{transform:translateY(-1px)}
-    .btnGhost{
-      background:transparent;
-      color:var(--text);
-    }
-    .btnGhost:hover{border-color:rgba(244,244,245,.30)}
-    .grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:16px;
-      margin-top:16px;
-    }
-    @media (max-width: 900px){
-      .grid{grid-template-columns:1fr}
-      h1{font-size:34px}
-    }
-    .card{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background: rgba(15,15,16,.35);
-      padding:18px;
-    }
-    .cardTitle{font-weight:700; letter-spacing:.5px}
-    .cardP{color:var(--muted); margin:10px 0 0; line-height:1.6}
-    .sectionTitle{
-      display:flex; align-items:baseline; justify-content:space-between; gap:10px;
-      margin-top:26px;
-    }
-    .sectionTitle h2{margin:0; font-size:18px; letter-spacing:.7px}
-    .sectionTitle span{color:var(--muted); font-size:13px}
-    .collections{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:12px;
-      margin-top:12px;
-    }
-    @media (max-width: 980px){ .collections{grid-template-columns: repeat(2, 1fr);} }
-    @media (max-width: 520px){ .collections{grid-template-columns: 1fr;} }
-    .tile{
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:16px;
-      background:
-        radial-gradient(420px 220px at 30% 20%, rgba(244,244,245,.08), transparent 65%),
-        rgba(15,15,16,.35);
-      min-height:130px;
+
+    a{ color:inherit; text-decoration:none; }
+
+    /* Layout container */
+    .wrap{ max-width:var(--max); margin:0 auto; padding:0 22px; }
+
+    /* Header (white bar) */
+    header{
+      height:var(--headerH);
+      border-bottom:1px solid var(--line);
+      background:#fff;
       display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
-    .tile .top{display:flex; align-items:center; justify-content:space-between; gap:10px}
-    .tag{
-      font-size:12px; color:var(--muted);
-      border:1px solid var(--line);
-      background: rgba(244,244,245,.04);
-      padding:6px 10px; border-radius:999px;
-    }
-    .tile h3{margin:12px 0 0; font-size:16px; letter-spacing:.5px}
-    .tile p{margin:8px 0 0; color:var(--muted); line-height:1.55; font-size:13px}
-    .tile .go{margin-top:14px; color:rgba(244,244,245,.86); font-weight:650; font-size:13px}
-    .featured{
-      margin-top:16px;
-      border:1px solid var(--line);
-      border-radius:28px;
-      padding:18px;
-      background:
-        linear-gradient(135deg, rgba(244,244,245,.07), rgba(244,244,245,.01) 60%),
-        rgba(15,15,16,.35);
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
       align-items:center;
     }
-    @media (max-width: 900px){ .featured{grid-template-columns:1fr} }
-    .price{color:var(--muted); font-size:14px; margin-top:8px}
-    .bullets{margin:14px 0 0; padding:0; list-style:none; color:var(--muted); line-height:1.8}
-    .bullets li{padding-left:14px; position:relative}
-    .bullets li:before{content:"—"; position:absolute; left:0; color:rgba(244,244,245,.50)}
-    .divider{height:1px; background:var(--line); margin:18px 0}
-    footer{
-      margin:26px 0 10px;
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.6;
-      display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    .headerRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      width:100%;
     }
-    .smallLinks{display:flex; gap:12px; flex-wrap:wrap}
-    .smallLinks a{color:var(--muted); border-bottom:1px solid transparent}
-    .smallLinks a:hover{color:var(--text); border-bottom-color:rgba(244,244,245,.35)}
+    .logo{
+      height:26px;
+      width:auto;
+      display:block;
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    nav a{
+      font-size:12px;
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+      color:#2a2a2a;
+      font-weight:300;           /* fino */
+      padding:6px 0;
+      border-bottom:1px solid transparent;
+    }
+    nav a:hover{
+      border-bottom-color:rgba(201,162,90,.55);
+      color:#111;
+    }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      height:320px;
+      overflow:hidden;
+      background:#0c0c0c;
+    }
+    .heroMedia{
+      position:absolute; inset:0;
+      background:#0c0c0c;
+    }
+    .heroMedia img{
+      width:100%; height:100%;
+      object-fit:cover;
+      filter: grayscale(1) contrast(1.05) brightness(.55);
+      transform: scale(1.03);
+    }
+    .heroShade{
+      position:absolute; inset:0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,.25) 55%, rgba(0,0,0,.70)),
+        radial-gradient(900px 420px at 70% 20%, rgba(201,162,90,.10), transparent 60%);
+      pointer-events:none;
+    }
+
+    .heroContent{
+      position:relative;
+      height:100%;
+      display:flex;
+      align-items:center;
+    }
+    .heroText{
+      max-width:560px;
+      padding-left:10px;
+    }
+
+    /* serif fina do hero (sem depender de Google Fonts) */
+    .heroTitle{
+      font-family: ui-serif, "Times New Roman", Georgia, serif;
+      font-weight:300;
+      font-size:36px;
+      line-height:1.06;
+      letter-spacing:.2px;
+      color:#f3f3f3;
+      margin:0 0 10px;
+    }
+    .heroSub{
+      margin:0 0 14px;
+      color:var(--gold);
+      font-size:14px;
+      line-height:1.45;
+      font-weight:300;
+    }
+
+    .heroCtas{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .btn{
+      height:34px;
+      padding:0 14px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:4px;
+      font-size:12px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      font-weight:300;
+      border:1px solid transparent;
+      cursor:pointer;
+    }
+    .btnPrimary{
+      background:var(--gold);
+      color:#fff;
+      border-color:var(--gold);
+    }
+    .btnPrimary:hover{ background:var(--gold2); border-color:var(--gold2); }
+    .btnOutline{
+      background:transparent;
+      color:var(--gold);
+      border-color:var(--gold);
+    }
+    .btnOutline:hover{
+      background:rgba(201,162,90,.10);
+    }
+
+    /* Divider below hero */
+    .divider{
+      height:1px;
+      background:var(--line);
+    }
+
+    /* Lower band (two columns) */
+    .band{
+      padding:18px 0 10px;
+      background:#fff;
+    }
+    .bandGrid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:26px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .hero{ height:360px; }
+      .bandGrid{ grid-template-columns: 1fr; }
+      nav{ display:none; } /* igual a muitos layouts: mobile simplificado */
+    }
+
+    .sectionLabel{
+      font-size:12px;
+      letter-spacing:1.4px;
+      text-transform:uppercase;
+      font-weight:300;
+      margin:0 0 10px;
+    }
+    .labelGold{ color:var(--gold); }
+    .labelInk{ color:#2a2a2a; }
+
+    /* Best sellers */
+    .products{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+    }
+    @media (max-width: 720px){
+      .products{ grid-template-columns: 1fr; }
+    }
+
+    .pCard{
+      text-align:center;
+      padding:10px 8px;
+      border:1px solid transparent;
+    }
+    .pImg{
+      height:120px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:10px;
+    }
+    .pImg img{
+      max-height:120px;
+      max-width:100%;
+      object-fit:contain;
+      filter: grayscale(1) contrast(1.05);
+    }
+    .pName{
+      font-size:11px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      font-weight:300;
+      color:#2a2a2a;
+      line-height:1.35;
+      min-height:34px;
+    }
+    .priceTag{
+      display:inline-block;
+      margin-top:8px;
+      padding:4px 10px;
+      background:var(--gold);
+      color:#fff;
+      border-radius:3px;
+      font-size:11px;
+      letter-spacing:.8px;
+      font-weight:300;
+    }
+
+    /* Assinatura cards */
+    .sigCards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 980px){
+      .sigCards{ grid-template-columns: 1fr; }
+    }
+
+    .sig{
+      border:1px solid var(--line);
+      padding:12px 12px 14px;
+      text-align:center;
+    }
+    .sigIcon{
+      width:34px; height:34px;
+      margin:2px auto 8px;
+      color:var(--gold);
+    }
+    .sigTitle{
+      font-size:12px;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      font-weight:300;
+      margin:0 0 6px;
+      color:#2a2a2a;
+    }
+    .sigText{
+      margin:0;
+      font-size:12px;
+      line-height:1.45;
+      color:var(--muted);
+      font-weight:300;
+    }
+
+    /* Footer micro-links */
+    .microFooter{
+      margin-top:10px;
+      padding:10px 0 18px;
+      border-top:1px solid var(--line);
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      font-size:11px;
+      color:#5f5f5f;
+      letter-spacing:.4px;
+      font-weight:300;
+    }
+    .microFooter a{ color:#5f5f5f; }
+    .microFooter a:hover{ color:#222; }
+
+    .copyright{
+      text-align:center;
+      font-size:10.5px;
+      color:#7a7a7a;
+      font-weight:300;
+      padding-bottom:18px;
+    }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="nav">
-      <div class="brand">
-        <div class="brandMark" aria-hidden="true"></div>
-        <div class="brandName">HAVVAH</div>
-      </div>
-      <div class="navLinks">
-        <a class="chip" href="#colecoes">Coleções</a>
-        <a class="chip" href="#destaque">Destaque</a>
-        <a class="chip" href="#manifesto">Manifesto</a>
-      </div>
+  <!-- Header -->
+  <header>
+    <div class="wrap headerRow">
+      <a href="/" aria-label="HAVVAH">
+        <img class="logo" src="/assets/logo.svg" alt="HAVVAH" />
+      </a>
+
+      <nav aria-label="Menu">
+        <a href="#shop">Shop</a>
+        <a href="#body-splash">Body Splash</a>
+        <a href="#capilares">Perfumes Capilares</a>
+        <a href="#cremes">Cremes Iluminados</a>
+        <a href="#sabonetes">Sabonetes</a>
+        <a href="#velas">Velas</a>
+        <a href="#masculinos">Masculinos</a>
+        <a href="#sobre">Sobre</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="shop" aria-label="Hero">
+    <div class="heroMedia" aria-hidden="true">
+      <!-- Placeholder P&B (troca depois pela foto exata, se você quiser) -->
+      <img src="https://www.genspark.ai/api/files/s/5geLgHif?cache_control=3600" alt="" />
+      <div class="heroShade"></div>
     </div>
 
-    <section class="hero" id="topo">
-      <div class="kicker">Perfumaria • Cosméticos • Editorial Noir</div>
-      <h1>Sensualidade elegante.<br/>Sem vulgaridade.</h1>
-      <p class="sub">
-        HAVVAH nasce para ser desejo: presença limpa, rastro íntimo e assinatura autoral.
-        Do body splash ao perfume capilar — a estética é a mesma: preto e branco, luxo e pele.
-      </p>
-      <div class="ctaRow">
-        <a class="btn btnPrimary" href="#destaque">Ver o destaque</a>
-        <a class="btn btnGhost" href="#colecoes">Explorar coleções</a>
-      </div>
+    <div class="wrap heroContent">
+      <div class="heroText">
+        <h1 class="heroTitle">HAVVAH — Fragrâncias<br/>de Presença</h1>
+        <p class="heroSub">Criações autorais com feromônio, ylang‑ylang e assinatura egípcia.</p>
 
-      <div class="grid" style="position:relative; z-index:1;">
-        <div class="card">
-          <div class="cardTitle">Assinatura HAVVAH</div>
-          <p class="cardP">
-            Um equilíbrio entre “clean” e magnetismo: a sensação de luxo discreto
-            que aproxima — e fica.
-          </p>
-        </div>
-        <div class="card">
-          <div class="cardTitle">Compra simples</div>
-          <p class="cardP">
-            Botão “Comprar agora” com checkout Stripe por produto.
-            Rápido para começar a vender e fácil de escalar.
-          </p>
+        <div class="heroCtas">
+          <a class="btn btnPrimary" href="#body-splash">Ver coleção</a>
+          <a class="btn btnOutline" href="#assinatura">Encontrar minha assinatura</a>
         </div>
       </div>
-    </section>
-
-    <div class="sectionTitle" id="colecoes">
-      <h2>Coleções</h2>
-      <span>Uma vitrine editorial — com foco em desejo + conversão</span>
     </div>
+  </section>
 
-    <section class="collections" aria-label="Coleções">
-      <a class="tile" href="#destaque">
-        <div class="top">
-          <span class="tag">Body Splash</span>
-          <span class="tag">200 ml</span>
-        </div>
-        <div>
-          <h3>Seis aromas. Um rastro limpo.</h3>
-          <p>Afrodite, Hera, Selene, Perséfone, Ísis e Héstia.</p>
-        </div>
-        <div class="go">Ver coleção →</div>
-      </a>
+  <div class="divider"></div>
 
-      <a class="tile" href="#destaque">
-        <div class="top">
-          <span class="tag">Perfume Capilar</span>
-          <span class="tag">50 ml</span>
-        </div>
-        <div>
-          <h3>O detalhe que muda tudo.</h3>
-          <p>Perfume no cabelo: aura íntima e projeção elegante.</p>
-        </div>
-        <div class="go">Ver coleção →</div>
-      </a>
-
-      <a class="tile" href="#destaque">
-        <div class="top">
-          <span class="tag">Cremes</span>
-          <span class="tag">com mica</span>
-        </div>
-        <div>
-          <h3>Pele iluminada. Luxo discreto.</h3>
-          <p>Hidratantes e iluminadores com acabamento premium.</p>
-        </div>
-        <div class="go">Ver coleção →</div>
-      </a>
-
-      <a class="tile" href="#destaque">
-        <div class="top">
-          <span class="tag">Masculinos</span>
-          <span class="tag">100 ml</span>
-        </div>
-        <div>
-          <h3>Presença escura, limpa e direta.</h3>
-          <p>Perfume corporal + hidratante sem mica.</p>
-        </div>
-        <div class="go">Ver coleção →</div>
-      </a>
-    </section>
-
-    <div class="sectionTitle" id="destaque">
-      <h2>Destaque</h2>
-      <span>Checkout funcionando (Stripe teste)</span>
-    </div>
-
-    <section class="featured" aria-label="Produto em destaque">
+  <!-- Lower band -->
+  <section class="band">
+    <div class="wrap bandGrid">
+      <!-- Best sellers -->
       <div>
-        <div class="kicker" style="margin:0;">Perfume Capilar • 50 ml</div>
-        <h2 style="margin:10px 0 0; font-size:26px; letter-spacing:.4px;">Afrodite Vanilla</h2>
-        <div class="price">R$ 78,90</div>
+        <p class="sectionLabel labelGold">Best Sellers</p>
 
-        <ul class="bullets">
-          <li>Baunilha polida + floral cremoso + fundo macio.</li>
-          <li>Rastro íntimo: aparece no movimento do cabelo.</li>
-          <li>Compra em 1 clique via Stripe Checkout.</li>
-        </ul>
+        <div class="products">
+          <div class="pCard">
+            <div class="pImg">
+              <img src="https://www.genspark.ai/api/files/s/oHKmVn2q?cache_control=3600" alt="Body Splash" />
+            </div>
+            <div class="pName">Body Splash<br/>Oud &amp; Jasmim</div>
+            <div class="priceTag">R$ 59,90</div>
+          </div>
 
-        <div class="ctaRow">
-          <a class="btn btnPrimary"
-             href="https://buy.stripe.com/test_aFa00l1II4SL5Wvcur7EQ00"
-             target="_blank" rel="noopener noreferrer">
-             Comprar agora
-          </a>
-          <a class="btn btnGhost" href="#manifesto">Ler manifesto</a>
-        </div>
+          <div class="pCard">
+            <div class="pImg">
+              <img src="https://www.genspark.ai/api/files/s/5geLgHif?cache_control=3600" alt="Perfume Capilar" />
+            </div>
+            <div class="pName">Perfume Capilar<br/>Afrodite Vanilla</div>
+            <div class="priceTag">R$ 78,90</div>
+          </div>
 
-        <div class="divider"></div>
-        <div style="color:var(--muted); font-size:12px; line-height:1.6;">
-          *Checkout em modo teste. Depois você me manda o link real e eu substituo sem mudar o design.
+          <div class="pCard">
+            <div class="pImg">
+              <img src="https://www.genspark.ai/api/files/s/oHKmVn2q?cache_control=3600" alt="Creme Iluminado" />
+            </div>
+            <div class="pName">Creme Iluminado<br/>Orquídea Negra</div>
+            <div class="priceTag">R$ 59,90</div>
+          </div>
         </div>
       </div>
 
-      <div class="card" style="border-radius:28px;">
-        <div class="cardTitle">Como usar</div>
-        <p class="cardP">
-          Borrife a 15–20 cm do cabelo (comprimento e pontas).
-          Reaplique quando quiser reativar o rastro — especialmente antes de sair.
-        </p>
-        <div class="divider"></div>
-        <div class="cardTitle">Efeito</div>
-        <p class="cardP">
-          Aura elegante e contínua: o perfume aparece quando você se move.
-        </p>
-      </div>
-    </section>
+      <!-- Assinatura -->
+      <div id="assinatura">
+        <p class="sectionLabel labelInk">Assinatura HAVVAH</p>
 
-    <div class="sectionTitle" id="manifesto">
-      <h2>Manifesto</h2>
-      <span>curto, direto, premium</span>
+        <div class="sigCards">
+          <div class="sig">
+            <!-- icon: ring/bottle -->
+            <svg class="sigIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 7h6" />
+              <path d="M10 7V5.8c0-.9.7-1.6 1.6-1.6h.8c.9 0 1.6.7 1.6 1.6V7" />
+              <path d="M8 10c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2h-4c-1.1 0-2-.9-2-2v-8z" />
+              <path d="M7 20h10" />
+            </svg>
+            <h3 class="sigTitle">Feromônio</h3>
+            <p class="sigText">Atração irresistível e presença marcante.</p>
+          </div>
+
+          <div class="sig">
+            <!-- icon: flower -->
+            <svg class="sigIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 12c2.2-2.2 6-1.5 6.5 1.5.4 2.2-1.2 4.3-3.5 4.5-1.4.1-2.6-.5-3.3-1.5-.7 1-1.9 1.6-3.3 1.5-2.3-.2-3.9-2.3-3.5-4.5C6 10.5 9.8 9.8 12 12z"/>
+              <path d="M12 12c-2.2-2.2-1.5-6 1.5-6.5 2.2-.4 4.3 1.2 4.5 3.5.1 1.4-.5 2.6-1.5 3.3"/>
+              <path d="M12 12c2.2 2.2 1.5 6-1.5 6.5-2.2.4-4.3-1.2-4.5-3.5-.1-1.4.5-2.6 1.5-3.3"/>
+            </svg>
+            <h3 class="sigTitle">Ylang‑ylang</h3>
+            <p class="sigText">Sensualidade floral e sofisticação exótica.</p>
+          </div>
+
+          <div class="sig">
+            <!-- icon: pyramid -->
+            <svg class="sigIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 4l9 16H3L12 4z" />
+              <path d="M12 4l4.5 8H7.5L12 4z" />
+            </svg>
+            <h3 class="sigTitle">Toque Egípcio</h3>
+            <p class="sigText">Mistério milenar e intensidade duradoura.</p>
+          </div>
+        </div>
+
+        <div class="microFooter">
+          <a href="#contato">Contact</a>
+          <a href="#shipping">Shipping</a>
+          <a href="#returns">Returns</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        </div>
+        <div class="copyright">© <span id="y"></span> HAVVAH. All rights reserved.</div>
+      </div>
     </div>
-
-    <section class="card" style="border-radius:28px;">
-      <p class="cardP" style="margin:0; font-size:15px;">
-        HAVVAH é assinatura.
-        Não sobre “chegar chegando” — e sim sobre ficar.
-        Preto e branco, luz e sombra, pele e presença.
-        O luxo aqui é íntimo: você sente antes de explicar.
-      </p>
-    </section>
-
-    <footer>
-      <div>© <span id="y"></span> HAVVAH • Preview em Cloudflare Pages</div>
-      <div class="smallLinks">
-        <a href="#topo">Topo</a>
-        <a href="#colecoes">Coleções</a>
-        <a href="#destaque">Destaque</a>
-      </div>
-    </footer>
-  </div>
+  </section>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
